@@ -9,23 +9,5 @@ module ApplicationHelper
 			page_title + " | " + base_title
 		end
 	end
-
-	def yeller(a=['o', 'l', 'd'])
-		a = a.map { |n| n.upcase }
-		print a.join("")
-		
-	end
-
-	def random_subdomain
-		puts ("a".."z").to_a.shuffle[0..7].join('')
-	end
-
-	def string_shuffle(s)
-		s.split('').shuffle.join
-	end
-
-
-
-
-  
+	
 end

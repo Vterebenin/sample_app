@@ -1,20 +1,13 @@
-<h1>Sample App</h1>
-<p>
-	This is the home page for the <%= puts "#{yeller()} #{string_shuffle("kappa")}  123 #{random_subdomain}"  
-	h = { one: "uno", two: "duo", three: "tres" }
-	h.each do |k, v|
-		puts "'#{k}' in Spanish is '#{v}'"
-	end
-	person1 = { first: "Random_first_name1", last: "Random_last_name1" }
-  person2 = { first: "Random_first_name2", last: "Random_last_name2" }
-  person3 = { first: "Random_first_name3", last: "Random_last_name3" }
-  params = {}
-  params = { father: person1, mother: person2, child: person3 }
-  puts params[:father][:first]
-  hash = { :name => "Random", :email => "random@mail.com", :password_digest => "asdfasdfsadfasdf" }
-  puts hash
-  puts ({ "a" => 100, "b" => 300 }).merge({ "b" => 200 })
-	%>
-  <a href="http://www.railstutorial.org/">Ruby on Rails Tutorial</a>
-  sample application.
-</p>
+<div class="center jumbotron">
+	<h1>Welcome to the Sample App</h1>
+
+	<h2>
+		This is the home page for the
+		<a href="http://www.railstutorial.org/">Ruby on Rails Tutorial</a>
+		sample application.
+	</h2>
+
+	<%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
+</div>
+
+<%= link_to image_tag("rails.png", alt: "Rails logo"), 'http://rubyonrails.org' %>

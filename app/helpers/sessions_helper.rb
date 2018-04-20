@@ -10,6 +10,11 @@ module SessionsHelper
 		cookies.permanent.signed[:user_id] = user.id # associate user_id in cookies with users id
 		cookies.permanent[:remember_token] = user.remember_token # associate remember_token to the cookies remember_token
 	end
+
+	# Returns true if the given user is the current user
+	def current_user?(user)
+		user == current_user		
+	end
 	
 	# Returns the user corresponding to the remember token cookie.
 	def current_user
@@ -30,9 +35,10 @@ module SessionsHelper
 		!current_user.nil?
 	end
 
+	# destroy cookies and remember digest
 	def forget(user)
-		user.forget
-		cookies.delete(:user_id)
+		user.forget # user.update_attribute(:remember_digest, nil)
+		cookies.delete(:user_id) # destroy cookies
 		cookies.delete(:remember_token)
 	end
 
@@ -41,5 +47,16 @@ module SessionsHelper
   	forget(current_user)
     session.delete(:user_id)
     @current_user = nil
+  end
+
+  # Redirects to stored location (or to the default).
+  def redirect_back_or(default)
+    redirect_to(session[:forwarding_url] || default)
+    session.delete(:forwarding_url)
+  end
+
+  # Stores the URL trying to be accessed.
+  def store_location
+    session[:forwarding_url] = request.original_url if request.get?
   end
 end

@@ -2,7 +2,7 @@ require 'test_helper'
 
 class UsersLoginTest < ActionDispatch::IntegrationTest
 	def setup
-		@user = users(:Valentine)
+		@user = users(:michael)
 	end
   # 1. Visit the login path.
 	# 2. Verify that the new sessions form renders properly.
